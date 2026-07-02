@@ -1,11 +1,6 @@
-import express from 'express'
+import createApp from "./app";
 
-const app = express();
-app.use(express.json())
-
-app.get("/", (req, res) => {
-    res.json({message: 'API rodando'})
-})
+const app = createApp()
 
 const PORT = 3000
 

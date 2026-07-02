@@ -1,102 +1,98 @@
-# Express + TypeScript API Template
+# 📚 Book Catalog API
 
-Um template para criação de APIs REST utilizando **Express**, **TypeScript** e **Zod**, com uma estrutura simples, organizada e pronta para servir como base em novos projetos.
+API REST simples para gerenciamento de um catálogo de livros, construída com **Node.js**, **Express** e **TypeScript**, utilizando um **arquivo JSON** como camada de persistência de dados (sem banco de dados).
+
+Projeto criado para fins de estudo e prática de desenvolvimento de APIs REST.
 
 ## 🚀 Tecnologias
 
-* Node.js
-* Express
-* TypeScript
-* Zod
+- Node.js
+- Express
+- TypeScript
+- Zod (validação de dados)
+- fs/promises (leitura e escrita do JSON)
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do projeto
 
-```text
+```
 src/
-├── controllers/
-├── middlewares/
-├── routes/
-├── schemas/
+├── data/
+│   └── books.json
+├── models/
+│   └── Book.ts
+├── repositories/
+│   └── BookRepository.ts
 ├── services/
-├── utils/
-├── app.ts
+│   └── BookService.ts
+├── controllers/
+│   └── BookController.ts
+├── routes/
+│   └── bookRoutes.ts
+├── middlewares/
+│   └── errorHandler.ts
 └── server.ts
 ```
 
-> A estrutura pode ser adaptada conforme a necessidade do projeto.
+## ⚙️ Como rodar o projeto
 
-## ⚙️ Pré-requisitos
-
-* Node.js 18 ou superior
-* npm ou yarn
-
-## 📦 Instalação
-
-Clone o repositório:
-
+1. Clone o repositório:
 ```bash
 git clone <url-do-repositorio>
+cd book-catalog-api
 ```
 
-Acesse a pasta do projeto:
-
-```bash
-cd nome-do-projeto
-```
-
-Instale as dependências:
-
+2. Instale as dependências:
 ```bash
 npm install
 ```
 
-## ▶️ Executando o projeto
-
-Modo de desenvolvimento:
-
+3. Rode em modo de desenvolvimento:
 ```bash
 npm run dev
 ```
 
-Modo de produção:
+4. A API estará disponível em:
+```
+http://localhost:3000
+```
+
+## 📌 Endpoints
+
+| Método | Rota                | Descrição                          |
+|--------|---------------------|-------------------------------------|
+| GET    | `/books`             | Lista todos os livros               |
+| GET    | `/books/:id`          | Busca um livro pelo ID              |
+| POST   | `/books`              | Cria um novo livro                  |
+| PUT    | `/books/:id`          | Atualiza um livro existente         |
+| DELETE | `/books/:id`          | Remove um livro                     |
+| PATCH  | `/books/:id/status`   | Atualiza o status do livro          |
+
+## 📝 Exemplo de livro (JSON)
+
+```json
+{
+  "id": 1,
+  "title": "1984",
+  "author": "George Orwell",
+  "genre": "Ficção",
+  "year": 1949,
+  "pages": 328,
+  "status": "disponível"
+}
+```
+
+## 🧪 Scripts disponíveis
 
 ```bash
-npm run build
-npm start
+npm run dev     # roda o projeto em modo desenvolvimento (com reload automático)
+npm run build   # compila o TypeScript para JavaScript
+npm start       # roda a versão compilada (produção)
 ```
 
-## ✅ Validação de Dados
+## 📌 Status do projeto
 
-O projeto utiliza **Zod** para validar dados de entrada, permitindo criar schemas reutilizáveis para requisições da API.
-
-Exemplo:
-
-```ts
-import { z } from "zod";
-
-export const createUserSchema = z.object({
-  name: z.string().min(3),
-  email: z.email(),
-  password: z.string().min(6),
-});
-```
-
-## 📌 Objetivo
-
-Este template foi criado para agilizar o desenvolvimento de APIs REST utilizando uma base organizada, tipada e de fácil manutenção, reduzindo o tempo gasto com configurações iniciais.
-
-## 💡 Personalização
-
-Você pode utilizar este template como ponto de partida para adicionar recursos como:
-
-* Autenticação com JWT
-* Banco de dados (PostgreSQL, MySQL, MongoDB, etc.)
-* ORM (Prisma, TypeORM, Drizzle)
-* Logs
-* Testes automatizados
-* Docker
-* Documentação com Swagger/OpenAPI
+🚧 Em desenvolvimento — projeto criado para fins de aprendizado.
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT. Sinta-se à vontade para utilizar, modificar e distribuir.
+Este projeto é livre para uso educacional.
