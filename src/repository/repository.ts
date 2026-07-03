@@ -27,3 +27,25 @@ export const getBookById = async (id: number) => {
     }
 
 }
+
+export const postBookRepository = async (data:BookModel): Promise<BookModel> => {
+
+    try {
+
+        const rawData = await fs.readFile("./src/data/books.json", "utf-8");
+
+        const arrayData:BookModel[] = JSON.parse(rawData);
+
+        arrayData.push(data);
+
+        await fs.writeFile("./src/data/books.json", JSON.stringify(arrayData, null, 2));
+
+        return data;
+        
+    } catch (error) {
+        
+        console.error("Erro ao adicionar o novo livro, erro: ", error);
+
+        throw new Error("Nâo foi possivel adicionar o novo livro.")
+    }
+}

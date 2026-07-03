@@ -17,3 +17,10 @@ export const getBookByIdServices = async (id: number) : Promise<BookModel | null
 
         return book
 }
+
+export const postBookService = async (data: BookModel) : Promise<BookModel> => {
+
+        const createBook = await BookRepository.postBookRepository(data);
+
+        return createBook;
+}

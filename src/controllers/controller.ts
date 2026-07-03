@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-
 import { BookModel } from "../models/book-model";
-
 import * as BookServices from "../services/services"
+import { bookSchema } from "../schemas/BookSchemas";
 
 export const getBookController = async (  req: Request, res: Response) => {
 
@@ -43,4 +42,30 @@ export const getBookByIdController = async (req: Request, res: Response) => {
         return res.status(500).json({ message: "Erro interno ao acessar os dados dos livros" });
 
     }
+}
+
+export const postBookController = async (req: Request, res: Response) => {
+
+    //Valida o formato e os tipos de dados
+    const parseResult = bookSchema.safeParse(req.body);
+
+    if(!parseResult.success) {
+        return res.status(400).json({
+            message: "Dados inválidos",
+            errors: parseResult.error.flatten().fieldErrors,
+        })
+    }
+
+    try {
+            const bookData: BookModel = parseResult.data as unknown as BookModel;
+            const response = await BookServices.postBookService(bookData);
+
+            return res.status(201).json(response);
+    } catch (error) {
+            console.error("erro ao buscar livro, ", error)
+
+            return res.status(500).json({message: "Erro interno ao tentar adiconar o novo llvro."})
+    }
+
+
 }

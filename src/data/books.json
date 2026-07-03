@@ -118,5 +118,37 @@
     "language": "Inglês",
     "isbn": "9780000000010",
     "available": false
+  },
+  {
+    "id": 69,
+    "title": "O Nome do Vento",
+    "author": "Patrick Rothfuss",
+    "genre": "Fantasia",
+    "publisher": "Arqueiro",
+    "publication_year": 2009,
+    "pages": 656,
+    "language": "Português",
+    "isbn": "9788599296363",
+    "available": true
+  },
+  {
+    "title": "O Nome do Vento",
+    "author": "Patrick Rothfuss",
+    "genre": "Fantasia",
+    "publisher": "Arqueiro",
+    "publication_year": 2009,
+    "pages": 656,
+    "language": "Português",
+    "isbn": "9788599296363",
+    "available": true
+  },
+  {
+    "id": 1,
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Ficção",
+    "year": 1949,
+    "pages": 328,
+    "status": "disponível"
   }
 ]
